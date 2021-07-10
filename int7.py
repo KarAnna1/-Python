@@ -1,104 +1,104 @@
 # Задача 1
 
-# class Matrix:
-#     def __init__(self, matr):
-#         self.matr = matr
-#
-#     def __str__(self):
-#         for i in self.matr:
-#             for j in i:
-#                 print("{:4}".format(j), end='')
-#             print()
-#         return ''
-#
-#     def __add__(self, other):
-#         __n_mnatr = []
-#         for i in range(0, len(self.matr)):
-#             __n_mnatr_i = []
-#
-#             for j in range(0, len(self.matr[i])):
-#
-#                 __n_mnatr_i.append(self.matr[i][j] + other.matr[i][j])
-#             __n_mnatr.append(__n_mnatr_i)
-#
-#         return Matrix(__n_mnatr)
-#
-#
-# new_m_A = Matrix([[1, 3, 2], [5, 9, 32], [4, 9, 45]])
-# print(new_m_A)
-#
-# new_m_B = Matrix([[12, 3, 8], [5, 7, 18], [5, 9, 2]])
-# print(new_m_B)
-#
-# new_m_C = Matrix.__add__(new_m_A, new_m_B)
-# print(new_m_C)
-#
+class Matrix:
+    def __init__(self, matr):
+        self.matr = matr
+
+    def __str__(self):
+        for i in self.matr:
+            for j in i:
+                print("{:4}".format(j), end='')
+            print()
+        return ''
+
+    def __add__(self, other):
+        __n_mnatr = []
+        for i in range(0, len(self.matr)):
+            __n_mnatr_i = []
+
+            for j in range(0, len(self.matr[i])):
+
+                __n_mnatr_i.append(self.matr[i][j] + other.matr[i][j])
+            __n_mnatr.append(__n_mnatr_i)
+
+        return Matrix(__n_mnatr)
+
+
+new_m_A = Matrix([[1, 3, 2], [5, 9, 32], [4, 9, 45]])
+print(new_m_A)
+
+new_m_B = Matrix([[12, 3, 8], [5, 7, 18], [5, 9, 2]])
+print(new_m_B)
+
+new_m_C = Matrix.__add__(new_m_A, new_m_B)
+print(new_m_C)
+
 
 # Задача 2
-#
-# from abc import abstractmethod, ABC
-# class Clothes(ABC):
-#
-#     def __init__(self, title):
-#         self.title = title
-#
-#     def __add__(self, other):
-#         return VCl('VCl',(float(self.formula()) + float(other.formula())))
-#
-#     def __str__(self):
-#         return self.formula()
-#
-#     @abstractmethod
-#     def formula(self, s):
-#         pass
-#
-# class VCl(Clothes):
-#     def __init__(self, title,vs):
-#         self.vs = vs
-#
-#     def formula(self):
-#         return (self.vs).__format__('.2f')
-#
-#
-# class Coat(Clothes):
-#     def __init__(self, title, V):
-#         super(Coat, self).__init__(title)
-#         self.V = V
-#
-#     def formula(self):
-#         return (self.V / 6.5 + 0.5).__format__('.2f')
-#
-# class Suit(Clothes):
-#     def __init__(self, title, Heigh):
-#         super(Suit, self).__init__(title)
-#         self.Heigh = Heigh
-#
-#     @property
-#     def Heigh(self):
-#         return self.__Heigh
-#
-#     @Heigh.setter
-#     def Heigh(self, Heigh):
-#         if Heigh > 5:
-#             self.__Heigh = 5
-#         elif Heigh < 0.5:
-#             self.__Heigh = 0.5
-#         else:
-#             self.__Heigh = Heigh
-#
-#     def formula(self):
-#         return (2 * self.Heigh + 0.3).__format__('.2f')
-#
-# coat = Coat('coat', 12)
-# print(f'Для {coat.title} потрачено {coat.formula()}')
-#
-# suit = Suit('suit', 3)
-# print(f'Для {suit.title} потрачено {suit.formula()}')
-#
-# suit1 = Suit('suit', 50)
-# print(f'Для {suit1.title} потрачено {suit1.formula()}')
-#
-# print(f'Всего потрачено {coat + suit + suit1 + coat1}')
+
+from abc import abstractmethod, ABC
+class Clothes(ABC):
+
+    def __init__(self, title):
+        self.title = title
+
+    def __add__(self, other):
+        return VCl('VCl',(float(self.formula()) + float(other.formula())))
+
+    def __str__(self):
+        return self.formula()
+
+    @abstractmethod
+    def formula(self, s):
+        pass
+
+class VCl(Clothes):
+    def __init__(self, title,vs):
+        self.vs = vs
+
+    def formula(self):
+        return (self.vs).__format__('.2f')
+
+
+class Coat(Clothes):
+    def __init__(self, title, V):
+        super(Coat, self).__init__(title)
+        self.V = V
+
+    def formula(self):
+        return (self.V / 6.5 + 0.5).__format__('.2f')
+
+class Suit(Clothes):
+    def __init__(self, title, Heigh):
+        super(Suit, self).__init__(title)
+        self.Heigh = Heigh
+
+    @property
+    def Heigh(self):
+        return self.__Heigh
+
+    @Heigh.setter
+    def Heigh(self, Heigh):
+        if Heigh > 5:
+            self.__Heigh = 5
+        elif Heigh < 0.5:
+            self.__Heigh = 0.5
+        else:
+            self.__Heigh = Heigh
+
+    def formula(self):
+        return (2 * self.Heigh + 0.3).__format__('.2f')
+
+coat = Coat('coat', 12)
+print(f'Для {coat.title} потрачено {coat.formula()}')
+
+suit = Suit('suit', 3)
+print(f'Для {suit.title} потрачено {suit.formula()}')
+
+suit1 = Suit('suit', 50)
+print(f'Для {suit1.title} потрачено {suit1.formula()}')
+
+print(f'Всего потрачено {coat + suit + suit1 + coat1}')
 
 
 # Задача 3.
